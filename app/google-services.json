@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "884982452697",
+    "firebase_url": "https://wind-energy-optimizer.firebaseio.com",
+    "project_id": "wind-energy-optimizer",
+    "storage_bucket": "wind-energy-optimizer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884982452697:android:fb4b893f96cc5efe8349c8",
+        "android_client_info": {
+          "package_name": "com.ibm.energyoptimizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884982452697-u8jqs3c0amkhnqcpacug9481a468k562.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ibm.energyoptimizer",
+            "certificate_hash": "e74da21371e041a408d7dcc19bcc9285dc250042"
+          }
+        },
+        {
+          "client_id": "884982452697-71k2bdt9m4m9uv4t7dhue6v04eckbo6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMRBEdh7sEhhXU_4q8WbsfNKzBoBerRXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884982452697-71k2bdt9m4m9uv4t7dhue6v04eckbo6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

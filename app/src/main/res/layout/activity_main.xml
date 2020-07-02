@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="750dp">
+
+            <ImageView
+                android:id="@+id/dec1"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@id/powerout_head"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/dec1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="-40dp"
+                android:background="@drawable/dec2"/>
+
+            <TextView
+                android:id="@+id/powerout_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/power_output_pred_txt"/>
+
+
+            <LinearLayout
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/power_output_data"
+                android:layout_below="@id/powerout_head"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/bestPowerTV1"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:layout_margin="12dp"
+                    android:textSize="@dimen/largeHeadingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:id="@+id/bestPowerTV2"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/normalTextSize"
+                    android:layout_margin="12dp"
+                    android:paddingHorizontal="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:id="@+id/bestPowerTV3"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:textSize="@dimen/smallTextSize"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="15dp"
+                    android:paddingHorizontal="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/status_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status : " />
+            <TextView
+                android:id="@+id/fetchResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/status_TV"
+
+                android:text="Fetching Data"/>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:visibility="invisible"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:indeterminate="true"/>
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/getDataBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/get_full_prediction"
+                android:layout_below="@id/dec1"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="-100dp"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/usethisaddr_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="300dp"
+                android:minHeight="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/getDataBtn"
+                android:background="@drawable/use_this_address"
+                />
+
+            <EditText
+                android:id="@+id/e_cust_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/usethisaddr_txt"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:background="@drawable/edittext_shape"/>
+            <Button
+                android:id="@+id/refresh"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+                android:layout_below="@id/e_cust_address"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edittext_shape"
+                android:text="Refresh"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>
