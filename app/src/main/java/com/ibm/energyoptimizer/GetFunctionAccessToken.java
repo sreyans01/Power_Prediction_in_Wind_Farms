@@ -2,32 +2,26 @@ package com.ibm.energyoptimizer;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.ibm.energyoptimizer.PojoClasses.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
-public class GetAccessToken extends AsyncTask<String,Void,String> {
+public class GetFunctionAccessToken extends AsyncTask<String,Void,String> {
     public JSONArray jsonArray;
     public AccessTokenApi accessTokenApi;
 
 
-    public GetAccessToken(AccessTokenApi accessTokenApi) {
+    public GetFunctionAccessToken(AccessTokenApi accessTokenApi) {
         this.accessTokenApi = accessTokenApi;
     }
 
@@ -43,7 +37,7 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setRequestMethod("POST");
 
-            urlConnection.setRequestProperty("Content-type","application/x-www-form-urlencoded");
+            urlConnection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
             urlConnection.setDefaultUseCaches(false);
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -55,8 +49,11 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
 
              */
 
-            String apikey = "oBhAZ0BMAHKtMjP1pCksazYUhv27eGVTJvfKlyd_GjXo";
-            String dataToBePushed = "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey="+apikey;
+            String apikey2 = "rWBYMMAvXLpT0poX4fMQBdWofu7mWvKRg2zMaAdvjV9z";
+            String dataToBePushed2 = "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey="+apikey2;
+
+            String dataToBePushed = "apikey=" + apikey2 + "&grant_type=urn:ibm:params:oauth:grant-type:apikey";
+
 
 
             OutputStream os = urlConnection.getOutputStream();
@@ -93,12 +90,12 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             String tokenInfo = jsonObject.getString("access_token");
 
             accessTokenApi.OnGettingAccessToken(tokenInfo);
-            Log.i("Access Token",tokenInfo);
+            Log.i("Access Token2",tokenInfo);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        Log.i("Website content",result);
+        Log.i("Website content456",result);
     }
 }

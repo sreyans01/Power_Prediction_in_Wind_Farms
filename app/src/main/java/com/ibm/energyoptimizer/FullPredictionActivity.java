@@ -42,7 +42,6 @@ public class FullPredictionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_prediction);
 
 
-
         Intent i = getIntent();
         powerOutputs = (List<Double>) i.getSerializableExtra("PredictionList");
         timeslots = i.getStringArrayListExtra("TimeSlots");
@@ -69,7 +68,7 @@ public class FullPredictionActivity extends AppCompatActivity {
         barData.setBarWidth(0.9f);
 
         barChart.setVisibility(View.VISIBLE);
-        barChart.animateY(5000);
+        barChart.animateY(4000);
         barChart.setData(barData);
         barChart.setFitBars(true);
 
@@ -113,5 +112,11 @@ public class FullPredictionActivity extends AppCompatActivity {
             }
 
         return timeslots;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        super.onBackPressed();
+        return true;
     }
 }

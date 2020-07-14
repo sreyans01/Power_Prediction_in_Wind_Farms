@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/trackBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track My Location"
+                android:textAllCaps="false"
+                android:layout_weight="1"
+                android:paddingHorizontal="10dp"
+                android:layout_marginHorizontal="5dp"
+                android:drawableLeft="@drawable/ic_location_"
+                android:background="@drawable/grad_greenyellow"
+                android:backgroundTint="#009688"/>
+
+            <Button
+                android:id="@+id/writeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Write Your Address"
+                android:paddingHorizontal="10dp"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:layout_marginHorizontal="5dp"
+                android:drawableRight="@drawable/ic_twotone_edit_24"
+                android:background="@drawable/grad_greenyellow"
+                android:backgroundTint="#009688"/>
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+        <LinearLayout
+            android:id="@+id/addressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/e_address"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="10dp"
+                android:layout_margin="8dp"
+                android:hint="Write Your Address"
+                android:background="@drawable/edittext_shape"/>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="120dp"
+                android:text="Submit"
+                android:elevation="6dp"
+                android:background="@drawable/grad_greenyellow"
+                android:textColor="@color/white"
+                android:backgroundTint="#0C0B0B"
+                android:paddingHorizontal="20dp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

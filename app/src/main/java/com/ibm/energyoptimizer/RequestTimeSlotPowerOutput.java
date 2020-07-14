@@ -1,35 +1,34 @@
 package com.ibm.energyoptimizer;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.ibm.energyoptimizer.PojoClasses.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("ALL")
-public class GetAccessToken extends AsyncTask<String,Void,String> {
+public class RequestTimeSlotPowerOutput extends AsyncTask<String,Void,String> {
     public JSONArray jsonArray;
-    public AccessTokenApi accessTokenApi;
+    public PredictionResultApi predictionResultApi;
+    private MaxPredictionApi maxPredictionApi;
+    private List<Double> predictedList;
 
-
-    public GetAccessToken(AccessTokenApi accessTokenApi) {
-        this.accessTokenApi = accessTokenApi;
+    public RequestTimeSlotPowerOutput(Context context, MaxPredictionApi maxPredictionApi) {
+        this.maxPredictionApi = maxPredictionApi;
     }
+
 
     @Override
     protected String doInBackground(String... urls) {
@@ -43,7 +42,11 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             urlConnection = (HttpURLConnection)url.openConnection();
             urlConnection.setRequestMethod("POST");
 
-            urlConnection.setRequestProperty("Content-type","application/x-www-form-urlencoded");
+
+            urlConnection.setRequestProperty("Content-Type","application/json");
+            urlConnection.setRequestProperty("Authorization","Bearer "+urls[1]);
+            urlConnection.setRequestProperty("ML-Instance-ID","89def234-5ebd-4907-a37b-e59d988f9286");
+            Log.i("kokok",urls[1]);
             urlConnection.setDefaultUseCaches(false);
             urlConnection.setDoInput(true);
             urlConnection.setDoOutput(true);
@@ -55,12 +58,21 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
 
              */
 
-            String apikey = "oBhAZ0BMAHKtMjP1pCksazYUhv27eGVTJvfKlyd_GjXo";
-            String dataToBePushed = "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey="+apikey;
+            String dataToBePushed = urls[2];
+            String newdata = dataToBePushed.replace("\"[","[\"");
+            newdata = newdata.replace("]\"","\"]");
+            newdata = newdata.replace(","," ");
+            newdata = newdata.replace("  "," ");
+
+            //newdata = "{\"values\": [\"1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 4 5 5\"]}";
+            //newdata = "{\"values\":[\"76  79  82  85  85  105  118  111  111  139  172  192  192  275  401  571  571  548  526  505  505  464  409  358\"]}";
+
+
+            Log.i("cococo",newdata);
 
 
             OutputStream os = urlConnection.getOutputStream();
-            os.write(dataToBePushed.getBytes());
+            os.write(newdata.getBytes());
             os.flush();
             os.close();
 
@@ -78,6 +90,8 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -86,19 +100,21 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        if(result==null)
-            return;
-        try {
-            JSONObject jsonObject = new JSONObject(result);
-            String tokenInfo = jsonObject.getString("access_token");
 
-            accessTokenApi.OnGettingAccessToken(tokenInfo);
-            Log.i("Access Token",tokenInfo);
-        } catch (JSONException e) {
+
+        if(result==null) {
+            maxPredictionApi.OnGettingMaxPowerOut("none");
+            return;
+        }
+        try {
+
+         maxPredictionApi.OnGettingMaxPowerOut(result);
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        Log.i("Website content",result);
+
     }
 }

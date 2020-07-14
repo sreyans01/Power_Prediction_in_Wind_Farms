@@ -1,112 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:orientation="vertical">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:layout_gravity="center" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd1"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="180dp"
+        android:layout_marginTop="15dp"
+        app:cardBackgroundColor="#0875CC"
+        app:cardCornerRadius="12dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/l1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/weatherIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="90dp"
+                    android:maxHeight="100dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/wicon_cloudwithsun"/>
+
+                <TextView
+                    android:id="@+id/weatherTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="28°C"
+                    android:gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/XXLextraLargeText"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/l1"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/windspeedTV1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:textColor="@color/white"
+                    android:text="Wind speed :"/>
+                <TextView
+                    android:id="@+id/windspeedTV2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:textColor="@color/white"
+                    android:text="Wind direction : "/>
+                <TextView
+                    android:id="@+id/windspeedTV3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:layout_gravity="start"
+                    android:textColor="@color/white"
+                    android:text="Description : "/>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd2"
+        android:layout_below="@id/cd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
+        app:cardCornerRadius="12dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:minHeight="750dp">
-
-            <ImageView
-                android:id="@+id/dec1"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_alignParentRight="true"
-                android:layout_toRightOf="@id/powerout_head"
-                android:layout_marginTop="150dp"
-                android:background="@drawable/dec1" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="-40dp"
-                android:background="@drawable/dec2"/>
-
-            <TextView
-                android:id="@+id/powerout_head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/power_output_pred_txt"/>
-
+            android:minHeight="80dp">
 
             <LinearLayout
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:background="@drawable/power_output_data"
-                android:layout_below="@id/powerout_head"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/bestPowerTV1"
-                    android:textColor="#ffffff"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:padding="8dp"
-                    android:layout_margin="12dp"
-                    android:textSize="@dimen/largeHeadingText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:id="@+id/bestPowerTV2"
-                    android:textColor="#ffffff"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/normalTextSize"
-                    android:layout_margin="12dp"
-                    android:paddingHorizontal="12dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:id="@+id/bestPowerTV3"
-                    android:textColor="#ffffff"
-                    android:gravity="center"
-                    android:textSize="@dimen/smallTextSize"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="15dp"
-                    android:paddingHorizontal="12dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-            </LinearLayout>
-
-
-
-            <LinearLayout
+                android:id="@+id/l2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:orientation="horizontal">
-            <TextView
-                android:id="@+id/status_TV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Status : " />
-            <TextView
-                android:id="@+id/fetchResult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/status_TV"
+                android:orientation="vertical">
+            <LinearLayout
 
-                android:text="Fetching Data"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/status_TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status : " />
+                <TextView
+                    android:id="@+id/fetchResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/status_TV"
+
+                    android:text="Fetching Data"/>
                 <ProgressBar
                     android:id="@+id/progressBar"
                     android:visibility="invisible"
@@ -115,56 +146,187 @@
                     android:indeterminate="true"/>
 
             </LinearLayout>
-
-
-
-            <Button
-                android:id="@+id/getDataBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/get_full_prediction"
-                android:layout_below="@id/dec1"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="-100dp"
-                android:layout_alignParentRight="true"/>
-
+                <TextView
+                    android:id="@+id/changeAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/blue1"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/ic_twotone_edit_24"
+                    android:layout_marginTop="8dp"
+                    android:text="Change Your Address"/>
+            </LinearLayout>
             <TextView
-                android:id="@+id/usethisaddr_txt"
+                android:id="@+id/bestPowerTV3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="300dp"
-                android:minHeight="60dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/getDataBtn"
-                android:background="@drawable/use_this_address"
-                />
+                android:text=""
+                android:visibility="invisible"
+                android:padding="8dp"
+                android:layout_below="@id/l2"/>
 
-            <EditText
-                android:id="@+id/e_cust_address"
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cd3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        app:cardBackgroundColor="#E2E4F3"
+        android:layout_below="@id/cd2">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/opfBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/usethisaddr_txt"
+                android:text="Output Power Forecast"
+                android:layout_marginVertical="10dp"
                 android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:background="@drawable/edittext_shape"/>
-            <Button
-                android:id="@+id/refresh"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-                android:layout_below="@id/e_cust_address"
+                android:paddingHorizontal="10dp"
+                android:textColor="@color/black"
+                android:background="@drawable/grad_greenyellow"
+                android:backgroundTint="@color/white"
+                android:elevation="4dp"
+                android:shadowColor="@color/white"
+                android:textSize="@dimen/largeHeadingText"/>
+            <LinearLayout
+                android:id="@+id/l3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/opfBtn"
                 android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:textColor="#ffffff"
-                android:textAllCaps="false"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/edittext_shape"
-                android:text="Refresh"/>
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/maxPowLay"
+                    android:layout_below="@id/opfBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Max Power Output"/>
+
+                    <TextView
+                        android:id="@+id/bestPowerTV1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:text="449KW"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/maxPowLay2"
+                    android:layout_toRightOf="@id/maxPowLay"
+                    android:layout_below="@id/opfBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="200dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="8dp"
+                        android:textAlignment="center"
+                        android:text="Time Slot"/>
+
+                    <TextView
+                        android:id="@+id/bestTimeTV1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:padding="8dp"
+                        android:text="11:00AM To 12:00PM"/>
+
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/infoTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:backgroundTint="@color/black"
+                    android:background="@drawable/ic_baseline_info_24"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/l3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="5dp"
+                    android:text="Choose a timeslot:"
+                    android:gravity="clip_vertical"/>
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1 Hour"
+                    android:textAllCaps="false"/>
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2 Hours"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"/>
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 Hours"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"/>
+
+            </LinearLayout>
         </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/getDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cd3"
+        android:layout_marginVertical="12dp"
+        android:layout_centerHorizontal="true"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp"
+        android:background="@drawable/grad_greenyellow"
+        android:text="Get Complete Result"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
 
     </LinearLayout>
 
-
-</ScrollView>
+</RelativeLayout>

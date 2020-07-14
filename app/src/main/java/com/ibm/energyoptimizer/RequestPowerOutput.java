@@ -48,10 +48,10 @@ public class RequestPowerOutput extends AsyncTask<String,Void,String> {
             JSONObject object = new JSONObject();
             object.put("Content-Type","application/json");
             object.put("Authorization","Bearer "+urls[1]);
-            object.put("ML-Instance-ID","de8b904f-69b1-4926-bd62-5c5c65893cf8");
+            object.put("ML-Instance-ID","e8b2e1c3-9068-458f-92ff-7b1b413da3af");
             urlConnection.setRequestProperty("Content-Type","application/json");
             urlConnection.setRequestProperty("Authorization","Bearer "+urls[1]);
-            urlConnection.setRequestProperty("ML-Instance-ID","de8b904f-69b1-4926-bd62-5c5c65893cf8");
+            urlConnection.setRequestProperty("ML-Instance-ID","e8b2e1c3-9068-458f-92ff-7b1b413da3af");
             Log.i("kokok",object.toString());
             urlConnection.setDefaultUseCaches(false);
             urlConnection.setDoInput(true);
@@ -101,9 +101,14 @@ public class RequestPowerOutput extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        if(result==null)
+        if(result==null) {
+            Log.i("popopo","lol");
+
             return;
+
+        }
         try {
+            Log.i("popopo",result);
             JSONObject jsonObject = new JSONObject(result);
             String weatherInfo = jsonObject.getString("values");
 

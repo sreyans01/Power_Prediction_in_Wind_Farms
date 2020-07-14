@@ -1,7 +1,9 @@
 package com.ibm.energyoptimizer;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ibm.energyoptimizer.PojoClasses.List;
 
@@ -57,9 +59,12 @@ public class GetWeatherData extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
 
-        if(result==null)
+        if(result==null) {
+
             return;
+        }
         try {
+
             JSONObject jsonObject = new JSONObject(result);
             String weatherInfo = jsonObject.getString("list");
 
